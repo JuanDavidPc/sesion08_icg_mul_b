@@ -12,14 +12,15 @@
      ctx.stroke();
      ctx.fill();
   }
-  function polygon(a,colorBorde, colorRelleno, grosor){
+  function rectangulo(cd,colorBorde, colorRelleno, grosor){
      ctx.beginPath()
      ctx.strokeStyle = colorBorde;
      ctx.fillStyle= colorRelleno;
      ctx.linewidth = grosor;
-     ctx.moveTo(a[0],a[1]);
-     for(i=2; i < a.lenth; i+=2)
-       ctx.lineTo(a[i],a[i+1]);
+     ctx.moveTo(cd[0],cd[1]);
+     ctx.lineTo(cd[2],cd[3]);
+     ctx.lineTo(cd[4],cd[5]);
+     ctx.lineTo(cd[6],cd[7]);
      ctx.closePath();
      ctx.stroke();
      ctx.fill();
@@ -34,20 +35,17 @@
   var c = document.getElementById('tablero')
   var ctx = c.getContext('2d') 
  
-  var [gris, naranja, verde, azul, amarillo ] = ['rgba(195,195,195)', 'rgba(255,127,38)', 'rgba(35,177,77)', 'rgba(0,163,232)', 'rgba(254,242,0)'];
+  var [gris, naranja, verde, azul, amarillo ] = ['rgba(195,195,195)', 'rgba(255,127,38)', 'rgba(34,177,76)', 'rgba(0,162,232)', 'rgba(254,242,0)'];
   var trgris = [117,14, 132,300,392,165];
-  var rectnar = [16,29,16,75,370,29,370,75];
-  var rectver = [316,12,356,12,316,308,355,308];
-  var rectazu = [363,235,363,275,18,234,18,276];
-  var rectama = [43,14,85,13,42,305,85,305];
+  var rectnar = [16,30,370,30,370,76,16,76], rectver = [316,308,316,12,355,12,355,308], rectazu = [18,234,362,234,362,275,18,275], rectama = [42,306,42,12,85,13,85,306];
 
+  rectangulo(rectazu, 'yellow' , azul,2);// rectangulo azul
+  rectangulo(rectama, 'gray' , amarillo);// rectangulo amarillo
+  triangulo (trgris, 'orange', gris,2);// triangulo gris 
+  rectangulo (rectnar, 'gray' , naranja);// rectangulo naranja
+  recorte ([316,308,316,12,355,12,355,308]); 
+  rectangulo (rectver, 'gray' , verde);// rectangulo verde
+  rectangulo(rectver, 'yellow' , azul,2);// rectangulo azul
   triangulo (trgris, 'orange', gris);// triangulo gris 
-  polygon (rectnar, 'gray' , naranja);// rectangulo naranja
-  recorte ([16,29,16,75,370,29,370,75]); 
-  polygon (rectver, 'gray' , verde);// rectangulo verde
-  recorte ([316,12,356,12,316,308,355,308]);
-  polygon (rectazu, 'yellow' , azul);// rectangulo azul
- recorte ([43,14,85,13,42,305,85,305]);
-  polygon (rectama, 'gray' , amarillo);// rectangulo amarillo
   
 </script>
